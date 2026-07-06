@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Research — Jordan Reyes</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --paper: #FAF8F4;
+    --ink: #1C1B19;
+    --graphite: #5C5953;
+    --accent: #5B6F55;
+    --accent-soft: #E8EDE4;
+    --hairline: #E3DFD6;
+    --card: #FFFFFF;
+    --research-text: #6E5A3C;
+    --research-bg: #F1EADA;
+
+    --font-display: 'Space Grotesk', sans-serif;
+    --font-body: 'Inter', sans-serif;
+    --font-mono: 'JetBrains Mono', monospace;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--paper);
+    color: var(--ink);
+    font-family: var(--font-body);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  a { color: inherit; text-decoration: none; }
+
+  .wrap {
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 0 28px;
+  }
+
+  /* ---------- NAV ---------- */
+  nav {
+    border-bottom: 1px solid var(--hairline);
+    position: sticky;
+    top: 0;
+    background: rgba(250, 248, 244, 0.92);
+    backdrop-filter: blur(6px);
+    z-index: 10;
+  }
+  .nav-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px 28px;
+    max-width: 760px;
+    margin: 0 auto;
+    position: relative;
+  }
+  .nav-prompt {
+    font-family: var(--font-mono);
+    font-size: 13px;
+    color: var(--graphite);
+  }
+  .nav-prompt .sym { color: var(--accent); }
+  .nav-prompt-link {
+    border-bottom: none;
+    transition: color 0.15s;
+  }
+  .nav-prompt-link:hover, .nav-prompt-link:focus-visible {
+    color: var(--ink);
+    border-bottom: none;
+  }
+  .nav-right {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+  }
+  .nav-links {
+    display: flex;
+    gap: 20px;
+    font-family: var(--font-mono);
+    font-size: 13px;
+  }
+  .nav-links a {
+    color: var(--graphite);
+    border-bottom: 1px solid transparent;
+    padding-bottom: 2px;
+    transition: color 0.15s, border-color 0.15s;
+  }
+  .nav-links a:hover, .nav-links a:focus-visible {
+    color: var(--ink);
+    border-color: var(--accent);
+  }
+  .nav-links a.current { color: var(--ink); border-color: var(--accent); }
+  .nav-divider {
+    width: 1px;
+    height: 16px;
+    background: var(--hairline);
+  }
+  .nav-icon-link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    color: var(--graphite);
+    transition: background-color 0.15s, color 0.15s;
+  }
+  .nav-icon-link:hover, .nav-icon-link:focus-visible {
+    background: var(--accent-soft);
+    color: var(--accent);
+  }
+  .nav-icon-link svg {
+    width: 16px;
+    height: 16px;
+  }
+
+  /* ---------- HAMBURGER ---------- */
+  .nav-hamburger {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    gap: 5px;
+    width: 32px;
+    height: 32px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 4px;
+    border-radius: 6px;
+    color: var(--graphite);
+    transition: background 0.15s;
+  }
+  .nav-hamburger:hover { background: var(--accent-soft); }
+  .nav-hamburger:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+  .nav-hamburger span {
+    display: block;
+    width: 100%;
+    height: 2px;
+    background: currentColor;
+    border-radius: 2px;
+    transition: transform 0.2s, opacity 0.2s;
+    transform-origin: center;
+  }
+  .nav-hamburger[aria-expanded="true"] span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+  .nav-hamburger[aria-expanded="true"] span:nth-child(2) { opacity: 0; }
+  .nav-hamburger[aria-expanded="true"] span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+  /* Mobile nav drawer */
+  .nav-mobile-drawer {
+    display: none;
+    flex-direction: column;
+    gap: 0;
+    background: rgba(250, 248, 244, 0.98);
+    backdrop-filter: blur(6px);
+    border-top: 1px solid var(--hairline);
+    padding: 8px 28px 16px;
+  }
+  .nav-mobile-drawer.is-open { display: flex; }
+  .nav-mobile-drawer a {
+    font-family: var(--font-mono);
+    font-size: 14px;
+    color: var(--graphite);
+    padding: 10px 0;
+    border-bottom: 1px solid var(--hairline);
+    transition: color 0.15s;
+  }
+  .nav-mobile-drawer a:last-child { border-bottom: none; }
+  .nav-mobile-drawer a:hover { color: var(--ink); }
+
+  /* ---------- PAGE HEADER ---------- */
+  header.page-head {
+    padding: 64px 0 40px;
+    border-bottom: 1px solid var(--hairline);
+  }
+  .eyebrow {
+    font-family: var(--font-mono);
+    font-size: 13px;
+    color: var(--accent);
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .dot {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: var(--accent);
+    display: inline-block;
+  }
+  h1 {
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: clamp(28px, 4vw, 36px);
+    letter-spacing: -0.02em;
+    line-height: 1.2;
+    margin-bottom: 14px;
+  }
+  .page-head p.lede {
+    font-size: 16px;
+    color: var(--graphite);
+    max-width: 540px;
+  }
+
+  /* ---------- ENTRY LIST ---------- */
+  .entry-list {
+    padding: 48px 0 80px;
+  }
+  .entry-row {
+    display: block;
+    border: 1px solid var(--hairline);
+    border-radius: 10px;
+    background: var(--card);
+    padding: 20px 22px;
+    margin-bottom: 14px;
+    transition: border-color 0.2s, transform 0.15s;
+  }
+  .entry-row:hover {
+    border-color: #cfc9ba;
+    transform: translateX(2px);
+  }
+  .entry-row:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 2px;
+  }
+  .entry-top {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 16px;
+    flex-wrap: wrap;
+    margin-bottom: 8px;
+  }
+  .entry-name {
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: 18px;
+  }
+  .entry-meta {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--graphite);
+    white-space: nowrap;
+  }
+  .status-pill {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    padding: 3px 9px;
+    border-radius: 4px;
+    color: var(--research-text);
+    background: var(--research-bg);
+  }
+  .entry-desc {
+    color: var(--graphite);
+    font-size: 14px;
+    max-width: 560px;
+  }
+  .entry-arrow {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    color: var(--accent);
+    margin-top: 10px;
+    display: block;
+  }
+  .empty-state {
+    font-family: var(--font-mono);
+    font-size: 13px;
+    color: var(--graphite);
+    padding: 24px 0 80px;
+  }
+  .empty-state code {
+    background: var(--accent-soft);
+    padding: 2px 6px;
+    border-radius: 4px;
+  }
+
+  footer {
+    padding: 28px 0 48px;
+    font-family: var(--font-mono);
+    font-size: 12px;
+    color: var(--graphite);
+    text-align: center;
+  }
+
+  @media (max-width: 640px) {
+    /* Nav: hide desktop links, show hamburger */
+    .nav-right { display: none; }
+    .nav-hamburger { display: flex; }
+    .nav-inner { padding: 14px 20px; }
+
+    .wrap { padding: 0 20px; }
+
+    header.page-head { padding: 40px 0 28px; }
+    h1 { font-size: clamp(24px, 7vw, 32px); }
+    .page-head p.lede { font-size: 14px; }
+
+    .entry-list { padding: 28px 0 48px; }
+    .entry-top { flex-direction: column; gap: 8px; align-items: flex-start; }
+    .entry-meta { white-space: normal; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <a href="index.html" class="nav-prompt nav-prompt-link"><span class="sym">~</span>/wasim-akhtar</a>
+    <div class="nav-right">
+      <div class="nav-links">
+        <a href="index.html#about">about</a>
+        <a href="index.html#projects">projects</a>
+        <a href="research.html" class="current">research</a>
+        <a href="index.html#skills">skills</a>
+        <a href="index.html#contact">contact</a>
+        <a href="/resume.pdf">resume</a>
+      </div>
+      <div class="nav-divider"></div>
+      <a href="https://github.com/yourusername" class="nav-icon-link" aria-label="GitHub" target="_blank" rel="noopener noreferrer">
+        <svg viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+          <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0 0 16 8c0-4.42-3.58-8-8-8z"/>
+        </svg>
+      </a>
+    </div>
+    <button class="nav-hamburger" id="nav-hamburger" aria-label="Open menu" aria-expanded="false" aria-controls="nav-mobile-drawer">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+  <div class="nav-mobile-drawer" id="nav-mobile-drawer" role="navigation" aria-label="Mobile navigation">
+    <a href="index.html#about">about</a>
+    <a href="index.html#projects">projects</a>
+    <a href="research.html" class="current">research</a>
+    <a href="index.html#skills">skills</a>
+    <a href="index.html#contact">contact</a>
+    <a href="/resume.pdf">resume</a>
+    <a href="https://github.com/yourusername" target="_blank" rel="noopener noreferrer">github ↗</a>
+  </div>
+</nav>
+
+<div class="wrap">
+
+  <header class="page-head">
+    <div class="eyebrow"><span class="dot"></span> things I'm thinking about</div>
+    <h1>Research notes</h1>
+    <p class="lede">A running list of ideas I'm exploring, mostly in service of the masters research I want to pursue. These are living notes, not polished papers — expect them to change as my thinking does.</p>
+  </header>
+
+  <section class="entry-list" id="entry-list">
+    <!-- Entries are rendered here by research-data.js. See that file to add new topics. -->
+  </section>
+
+  <p class="empty-state" id="empty-state" style="display:none;">
+    No research notes yet — add one in <code>research-data.js</code>.
+  </p>
+
+</div>
+
+<footer>
+  © 2026 Wasim Akhtar
+</footer>
+
+<script src="research-data.js"></script>
+<script>
+  function escapeHtml(str) {
+    const div = document.createElement('div');
+    div.textContent = str;
+    return div.innerHTML;
+  }
+
+  function renderEntries() {
+    const list = document.getElementById('entry-list');
+    const emptyState = document.getElementById('empty-state');
+
+    if (!Array.isArray(RESEARCH_ENTRIES) || RESEARCH_ENTRIES.length === 0) {
+      emptyState.style.display = 'block';
+      return;
+    }
+
+    list.innerHTML = RESEARCH_ENTRIES.map(entry => `
+      <a class="entry-row" href="research/${escapeHtml(entry.id)}.html">
+        <div class="entry-top">
+          <div class="entry-name">${escapeHtml(entry.title)}</div>
+          <div class="entry-meta">
+            <span class="status-pill">${escapeHtml(entry.status)}</span>
+            <span>${escapeHtml(entry.date)}</span>
+          </div>
+        </div>
+        <div class="entry-desc">${escapeHtml(entry.summary)}</div>
+        <span class="entry-arrow">Read the note →</span>
+      </a>
+    `).join('');
+  }
+
+  renderEntries();
+</script>
+
+<script>
+  // Hamburger menu toggle
+  const hamburger = document.getElementById('nav-hamburger');
+  const drawer = document.getElementById('nav-mobile-drawer');
+  if (hamburger && drawer) {
+    hamburger.addEventListener('click', () => {
+      const isOpen = drawer.classList.toggle('is-open');
+      hamburger.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+      hamburger.setAttribute('aria-label', isOpen ? 'Close menu' : 'Open menu');
+    });
+    drawer.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        drawer.classList.remove('is-open');
+        hamburger.setAttribute('aria-expanded', 'false');
+        hamburger.setAttribute('aria-label', 'Open menu');
+      });
+    });
+  }
+</script>
+
+</body>
+</html>
