@@ -21,7 +21,7 @@ const RESEARCH_ENTRIES = [
     id: "adaptive-computing",
     title: "Adaptive Computing",
     status: "exploring",
-    date: "July 01, 2026",
+    date: "July 10, 2026",
     summary: "Exploring what software would look like if it could gradually learn how its user works and adapt over time, while staying predictable and under the user's control.",
     idea: "Most software today is static. Whether you're coding, gaming, editing a video, or working on battery power, the system expects you to manually adjust settings, organize your workspace, and optimize your environment.\n\nI'm interested in exploring what software would look like if it could gradually learn how its user works and adapt over time while still remaining predictable, transparent, and under the user's control.",
     why: "This idea grew naturally while building Luna. Giving a terminal memory made everyday interactions feel more personal and useful. It made me wonder whether the same principle could be applied beyond a single application.\n\nInstead of building software that behaves the same for everyone, I'm interested in systems that understand context, learn from repeated behavior, and quietly improve the experience without taking control away from the user.",
