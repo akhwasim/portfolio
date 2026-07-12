@@ -5,7 +5,7 @@
 > My personal portfolio and research notes site.
 > Built with plain HTML, CSS, and a small Node.js build script - no frameworks, no bundler.
 
-**Live →** [akhwasim.netlify.app](akhwasim.netlify.app/)
+**Live →** [akhwasim.netlify.app](https://akhwasim.netlify.app/)
 
 <br>
 
