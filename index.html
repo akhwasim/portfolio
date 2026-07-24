@@ -594,12 +594,10 @@
 <div class="wrap">
 
   <header class="hero">
-    <div class="eyebrow"><span class="dot"></span> available for Internship role and research opportunities!</div>
+    <div class="eyebrow"><span class="dot"></span> Open to internship and research opportunities!</div>
     <h1>Wasim Akhtar<span class="cursor" aria-hidden="true"></span></h1>
-    <p class="lede">Wasim Akhtar
-      Computer Science student focused on systems programming,
-      developer tools, and AI. Building software that remembers,
-      learns, and adapts.</p>
+    <p class="lede">
+      Computer Science student focused on systems programming, developer tools, and AI. Building reliable software that combines deterministic systems with AI.</p>
 
     <div class="hero-actions">
       <a class="btn btn-primary" href="#projects">View Projects</a>
@@ -614,12 +612,12 @@
     <div class="section-label">about</div>
     <div class="about-text">
       <p>I'm a Computer Science student from Bengaluru, India, with a strong interest in systems programming, developer tools, and artificial intelligence. I enjoy understanding how software works beneath the surface and building tools that solve practical problems.</p>
-      <p>I recently built <strong>Luna</strong>, an AI-powered terminal that combines persistent memory, deterministic safety checks, workflow learning, and support for multiple AI providers. Building it reinforced my interest in designing software that is reliable, local-first, and centered around the user.</p>
-      <p>Beyond individual projects, I'm interested in long-term questions around adaptive computing, context-aware AI systems, and software that can learn from and adapt to the people who use it. I'm currently seeking internship and research opportunities where I can continue building systems software and contribute to challenging engineering problems.</p>
+      <p>I recently built <strong>Luna</strong>, an AI-powered terminal assistant, and <strong>Compass</strong> a platform that helps developers discover open source issues they can realistically contribute to. Both projects reinforced my interest in designing software that combines deterministic systems with AI to create tools that are reliable, explainable, and genuinely useful.</p>
+      <p>Beyond individual projects, I'm interested in developer tooling, adaptive computing, and context-aware AI systems. I enjoy exploring how software can assist people without sacrificing transparency or user control. I'm currently seeking internship and research opportunities where I can continue building systems software and contribute to challenging engineering problems.</p>
     </div>
   </section>
 
-  <!-- Project section -->
+  <!-- Project section Luna-->
 
   <section class="section" id="projects">
     <div class="section-label">projects</div>
@@ -638,7 +636,7 @@
       </div>
 
       <div class="project-summary">
-        Built in Rust, Luna combines persistent SQLite memory, workflow learning, deterministic safety checks, and support for multiple AI providers into a local-first terminal assistant.
+        A local-first AI terminal assistant that remembers workflows, applies deterministic safety checks, and helps developers work more efficiently.
       </div>
 
       <button class="project-toggle" aria-expanded="false" aria-controls="details-luna" onclick="toggleProject('proj-luna')">
@@ -662,8 +660,52 @@
         </div>
       </div>
     </div>
+
+  <!-- Project section Compass -->
+
+    <div class="project" id="proj-compass">
+      <div class="project-head">
+        <div>
+          <span class="project-path"><span class="status">●</span> <span class="status-word">Live</span> · projects/compass</span>
+          <div class="project-name">Compass</div>
+        </div>
+        <div class="project-links">
+          <a href="https://compass-oss.netlify.app/" target="_blank" rel="noopener noreferrer">Live demo →</a>
+          <a href="https://github.com/akhwasim/Compass" target="_blank" rel="noopener noreferrer">GitHub →</a>
+          <!-- <a href="" target="_blank" rel="noopener noreferrer">Blog →</a> -->
+        </div>
+      </div>
+
+      <div class="project-summary">
+        Helps developers discover GitHub issues they can realistically contribute based on their skills and experience, by combining deterministic ranking with bounded LLM reasoning.
+      </div>
+
+      <button class="project-toggle" aria-expanded="false" aria-controls="details-compass" onclick="toggleProject('proj-compass')">
+        Read more <span class="chevron">▾</span>
+      </button>
+
+      <div class="project-details" id="details-compass">
+        <div class="project-details-inner">
+          <p>Compass recommends beginner-friendly open source issues based on a developer's skills, experience, and interests instead of relying on keyword search alone.</p>
+          <p>It combines deterministic confidence scoring with bounded LLM reasoning, verifies repository structure before suggesting file paths, and explains why each issue is a good fit without inventing facts the system can verify itself.</p>
+        </div>
+        <div class="project-tags">
+          <span class="tag">Python</span>
+          <span class="tag">FastAPI</span>
+          <span class="tag">React</span>
+          <span class="tag">TypeScript</span>
+          <span class="tag">LLM</span>
+          <span class="tag">GitHub API</span>
+          <span class="tag">Docker</span>
+          <span class="tag">CI/CD</span>
+        </div>
+      </div>
+    </div>
   </section>
+
   
+  <!-- Rasearch section Adaptive Computing -->
+
   <section class="section" id="research">
     <div class="section-label">research-notes</div>
 
@@ -690,6 +732,9 @@
     </div>
   </section>
 
+  
+  <!-- skills section -->
+
 <section class="section" id="skills">
   <div class="section-label">skills</div>
 
@@ -697,15 +742,20 @@
     <span class="skill-pill">Rust</span>
     <span class="skill-pill">Python</span>
     <span class="skill-pill">JavaScript</span>
+    <span class="skill-pill">TypeScript</span>
+
     <span class="skill-pill">React</span>
-    <span class="skill-pill">HTML</span>
-    <span class="skill-pill">CSS</span>
-    <span class="skill-pill">SQLite</span>
+    <span class="skill-pill">FastAPI</span>
+
+    <span class="skill-pill">Linux</span>
     <span class="skill-pill">Git</span>
     <span class="skill-pill">GitHub</span>
-    <span class="skill-pill">FastAPI</span>
-    <span class="skill-pill">Linux</span>
-    <span class="skill-pill">AI Integration</span>
+    <span class="skill-pill">Docker</span>
+    <span class="skill-pill">GitHub Actions</span>
+
+    <span class="skill-pill">SQLite</span>
+    <span class="skill-pill">REST APIs</span>
+
     <span class="skill-pill">Developer Tools</span>
     <span class="skill-pill">Systems Programming</span>
   </div>
@@ -719,9 +769,9 @@
     <div>
       <h2>Let's connect.</h2>
       <p>
-        Currently looking for internship and research opportunities.
-        If you're building developer tools, systems software, or AI,
-        I'd be happy to connect.
+        I'm currently looking for internship and research opportunities.
+        If you're working on developer tools, systems software, or trustworthy AI systems,
+        I'd be happy to connect and collaborate.
       </p>
     </div>
 
