@@ -268,7 +268,7 @@
   <header class="entry-head">
     <div class="entry-meta-row">
       <span class="status-pill">exploring</span>
-      <span>last updated July 10, 2026</span>
+      <span>last updated Sep 6, 2026</span>
     </div>
     <h1>Adaptive Computing</h1>
   </header>
@@ -278,31 +278,34 @@
     <div class="note-body">
       Most software today is static. Whether you're coding, gaming, editing a video, or working on battery power, the system expects you to manually adjust settings, organize your workspace, and optimize your environment.
 
-I'm interested in exploring what software would look like if it could gradually learn how its user works and adapt over time while still remaining predictable, transparent, and under the user's control.
+I'm interested in exploring what software would look like if the computing environment could gradually learn how its user works and adapt over time while still remaining predictable, transparent, and under the user's control.
     </div>
   </section>
 
   <section class="note-section">
     <div class="section-label">why</div>
     <div class="note-body">
-      This idea grew naturally while building Luna. Giving a terminal memory made everyday interactions feel more personal and useful. It made me wonder whether the same principle could be applied beyond a single application.
+      This idea grew naturally while building Luna. Giving a terminal persistent memory made everyday interactions feel more personal and useful. It made me wonder whether the same principle could be applied beyond a single application.
 
-Instead of building software that behaves the same for everyone, I'm interested in systems that understand context, learn from repeated behavior, and quietly improve the experience without taking control away from the user.
+Instead of building software that behaves the same for everyone, I'm interested in systems that understand context, learn from repeated behavior, and adapt the computing environment around the user's needs without taking control away from them.
     </div>
   </section>
 
   <section class="note-section">
     <div class="section-label">how / current thinking</div>
     <div class="note-body">
-      I don't think the first step is building a brand-new operating system. A more realistic approach is building an adaptive layer that works on top of existing operating systems.
+      I don't think the first step is building a brand-new operating system. A more realistic approach is an adaptive layer that works on top of existing operating systems and observes context, user preferences, and recurring workflows.
+
+For example, when a user starts a demanding workload such as video editing, the system could identify which resources and applications are relevant, suggest changes to the environment, and—when explicitly permitted—apply them. The same principle could extend to development, gaming, battery-saving, and other recurring workflows.
 
 Right now I'm interested in questions such as:
 <ul>
-<li>What should software learn automatically?</li>
-<li>What should always require user approval?</li>
-<li>How can adaptive behavior remain explainable?</li>
-<li>How can learning happen without sacrificing privacy or reliability?</li>
-</ul>These are the questions I'm currently exploring rather than problems I already have answers to.
+<li>What should software learn automatically from user behavior and context?</li>
+<li>What actions should always require explicit user approval?</li>
+<li>How can adaptive behavior remain explainable and predictable?</li>
+<li>How can personalization happen without sacrificing privacy or reliability?</li>
+</ul>
+These are questions I'm currently exploring rather than problems I already have answers to.
     </div>
   </section>
 
@@ -310,11 +313,12 @@ Right now I'm interested in questions such as:
     <div class="section-label">open questions</div>
     <div class="note-body">
       <ul>
-<li>How should adaptive behavior be represented internally?</li>
-<li>When should software adapt automatically versus ask the user?</li>
+<li>How should adaptive behavior and learned preferences be represented internally?</li>
+<li>How should a system decide when to adapt automatically versus ask for approval?</li>
 <li>Can adaptive systems remain predictable as they become more personalized?</li>
-<li>How can users inspect, undo, or modify what the system has learned?</li>
-<li>What parts of an operating system are safe to adapt, and what parts should remain fixed?</li>
+<li>How can users inspect, undo, correct, or modify what the system has learned?</li>
+<li>What parts of a computing environment are safe to adapt, and what should remain fixed?</li>
+<li>How can an adaptive layer balance performance optimization with user privacy and control?</li>
 </ul>
     </div>
   </section>
