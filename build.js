@@ -36,6 +36,17 @@ function escapeHtml(str) {
     .replace(/>/g, "&gt;");
   return escaped.replace(/\u0000(\/?)(ul|li|strong|em)\u0000/g, "<$1$2>");
 }
+
+// Removes a whole <section class="note-section CLASSNAME">...</section> block
+// from the template. Used when an entry doesn't have optional content
+// (scenario, relatedWork) so we don't render an empty/labeled empty section.
+function stripSection(html, sectionClass) {
+  const re = new RegExp(
+    `\\s*<section class="note-section ${sectionClass}">[\\s\\S]*?<\\/section>\\s*`
+  );
+  return html.replace(re, "\n");
+}
+
 if (!fs.existsSync(OUTPUT_DIR)) {
   fs.mkdirSync(OUTPUT_DIR, { recursive: true });
 }
@@ -51,6 +62,8 @@ for (const entry of RESEARCH_ENTRIES) {
   }
 
   const openQuestions = entry.openQuestions || "[YOUR TEXT HERE — optional. List things you don't know yet.]";
+  const hasScenario = !!(entry.scenario && entry.scenario.title && entry.scenario.body);
+  const hasRelatedWork = !!entry.relatedWork;
 
   let html = template
     .replaceAll("{{TITLE}}", escapeHtml(entry.title))
@@ -64,6 +77,25 @@ for (const entry of RESEARCH_ENTRIES) {
     .replaceAll("{{WHY_CLASS}}", isUnfilled(entry.why) ? "placeholder" : "note-body")
     .replaceAll("{{HOW_CLASS}}", isUnfilled(entry.how) ? "placeholder" : "note-body")
     .replaceAll("{{OPEN_QUESTIONS_CLASS}}", isUnfilled(openQuestions) ? "placeholder" : "note-body");
+
+  // Optional: scenario section
+  if (hasScenario) {
+    html = html
+      .replaceAll("{{SCENARIO_TITLE}}", escapeHtml(entry.scenario.title))
+      .replaceAll("{{SCENARIO_BODY}}", escapeHtml(entry.scenario.body))
+      .replaceAll("{{SCENARIO_CLASS}}", isUnfilled(entry.scenario.body) ? "placeholder" : "note-body");
+  } else {
+    html = stripSection(html, "scenario-section");
+  }
+
+  // Optional: related work section
+  if (hasRelatedWork) {
+    html = html
+      .replaceAll("{{RELATED_WORK}}", escapeHtml(entry.relatedWork))
+      .replaceAll("{{RELATED_WORK_CLASS}}", isUnfilled(entry.relatedWork) ? "placeholder" : "note-body");
+  } else {
+    html = stripSection(html, "related-work-section");
+  }
 
   const outPath = path.join(OUTPUT_DIR, `${entry.id}.html`);
   fs.writeFileSync(outPath, html, "utf8");
